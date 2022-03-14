@@ -92,7 +92,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2022/03/14/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8hexo%E4%BD%95git%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">关于使用hexo何git搭建个人博客</a>
+      <a class="p-name article-title" href="/2022/03/14/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8hexo%E4%BD%95git%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">关于使用hexo和git搭建个人博客</a>
     </h1>
   
 
@@ -100,12 +100,31 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>123456789</p>
-
+        <p>使用hexo和github可以轻松的实现个人博客的搭建，操作简单，而且完全免费。<br>以下将一步一步的来介绍如何使用hexokinase和GitHub搭建个人博客</p>
+<h2 id="前提-环境以及常用工具"><a href="#前提-环境以及常用工具" class="headerlink" title="前提:  环境以及常用工具"></a>前提:  环境以及常用工具</h2><p>需要的环境配置：node、hexo<br>使用到的工具：GitHub、vscode（工具可看个人选择）</p>
+<h3 id="1-hexo安装"><a href="#1-hexo安装" class="headerlink" title="1. hexo安装"></a>1. hexo安装</h3><p>去到node的官网下载自己所需要的node安装包（32位和64位）<br>下载安装好node，里面有node自带的npm工具，调出命令行界面后，输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo -g  (-g的意思是：全局安装)</span><br></pre></td></tr></table></figure>
+<h3 id="2-找好文件夹"><a href="#2-找好文件夹" class="headerlink" title="2. 找好文件夹"></a>2. 找好文件夹</h3><p>在一个位置创建一个文件夹，如：myblog<br>初始化文件：在命令行进入到该文件 cd （目的文件），之后输入指令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init blog  (blog为文件名)</span><br></pre></td></tr></table></figure>
+<p>然后就是一段时间的等待。。。。。<br>好了之后，进入到文件里，先安装必须的依赖，命令是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+<p>随后可输入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>进行一下本地预览,看一下效果有没有出来</p>
+<h3 id="3-把博客发布到GitHub上"><a href="#3-把博客发布到GitHub上" class="headerlink" title="3. 把博客发布到GitHub上"></a>3. 把博客发布到GitHub上</h3><p>（1）  登录GitHub注册账号后，创建一个新的仓库<br>      仓库的名字比较特殊： 用户名.github.io<br>      选择为public模式，看需要选择模式后直接创建就行<br>（2） 仓库创建好后，随后配置哈git的信息<br>      在终端里先配置信息：<br>      <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;用户名&quot;</span></span><br></pre></td></tr></table></figure><br>      <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.email <span class="string">&quot;邮箱&quot;</span></span><br></pre></td></tr></table></figure><br>（3）进入到_config.ynl文件里，下拉到最下行<br>      <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy：</span><br><span class="line">  <span class="built_in">type</span>：<span class="string">&#x27;git&#x27;</span></span><br><span class="line">  repo: <span class="string">&#x27;https://github.com/zrj-rap/zrj-rap.github.io.git&#x27;</span> (该url地址就是创建仓库成功后跳出的url仓库地址)</span><br><span class="line">  branch: <span class="string">&#x27;main&#x27;</span></span><br></pre></td></tr></table></figure><br>（4）安装下插件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>（5）随后就是上传到仓库里面<br>*先清理下缓存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+<p>*之后生成下文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo g</span><br></pre></td></tr></table></figure>
+<p>*上传代码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo d</span><br></pre></td></tr></table></figure>
+<p>** 进入到仓库里，打开setting设置，拉到github pages 点击进去，有个网址，点击就可看到内容</p>
+<h3 id="4-注意配置文件"><a href="#4-注意配置文件" class="headerlink" title="4. 注意配置文件"></a>4. 注意配置文件</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://zrj-rap.github.io/2022/03/14/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8hexo%E4%BD%95git%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="cl0qrqzu6000198vja7twg3j1" data-title="关于使用hexo何git搭建个人博客" class="article-share-link">分享</a>
+      <a data-url="https://zrj-rap.github.io/2022/03/14/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8hexo%E4%BD%95git%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" data-id="cl0qrqzu6000198vja7twg3j1" data-title="关于使用hexo和git搭建个人博客" class="article-share-link">分享</a>
       
       
       
@@ -199,7 +218,7 @@
       <ul>
         
           <li>
-            <a href="/2022/03/14/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8hexo%E4%BD%95git%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">关于使用hexo何git搭建个人博客</a>
+            <a href="/2022/03/14/%E5%85%B3%E4%BA%8E%E4%BD%BF%E7%94%A8hexo%E4%BD%95git%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">关于使用hexo和git搭建个人博客</a>
           </li>
         
           <li>
